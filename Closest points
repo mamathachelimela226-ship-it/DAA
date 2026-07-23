@@ -1,0 +1,51 @@
+#include <iostream>
+#include <algorithm>
+#include <cmath>
+using namespace std;
+
+struct Point
+{
+    int x, y;
+};
+
+float distance(Point p1, Point p2)
+{
+    return sqrt((p1.x - p2.x) * (p1.x - p2.x) +
+                (p1.y - p2.y) * (p1.y - p2.y));
+}
+
+bool compareX(Point a, Point b)
+{
+    return a.x < b.x;
+}
+
+float bruteForce(Point p[], int n)
+{
+    float min = 999999;
+
+    for (int i = 0; i < n; i++)
+        for (int j = i + 1; j < n; j++)
+            if (distance(p[i], p[j]) < min)
+                min = distance(p[i], p[j]);
+
+    return min;
+}
+
+int main()
+{
+    int n;
+    cout << "Enter number of points: ";
+    cin >> n;
+
+    Point p[100];
+
+    cout << "Enter x and y coordinates:\n";
+    for (int i = 0; i < n; i++)
+        cin >> p[i].x >> p[i].y;
+
+    sort(p, p + n, compareX);
+
+    cout << "Minimum Distance = " << bruteForce(p, n);
+
+    return 0;
+}
