@@ -1,0 +1,25 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int n, num, sum = 0;
+    float average;
+
+    cout << "Enter the number of elements: ";
+    cin >> n;
+
+    for (int i = 1; i <= n; i++)
+    {
+        cout << "Enter element " << i << ": ";
+        cin >> num;
+        sum = sum + num;
+    }
+
+    average = (float)sum / n;
+
+    cout << "Sum = " << sum << endl;
+    cout << "Average = " << average << endl;
+
+    return 0;
+}
