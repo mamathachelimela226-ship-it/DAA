@@ -1,0 +1,28 @@
+#include <iostream>
+#include <vector>
+#include <string>
+#include <unordered_map>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    vector<string> strs = {"eat", "tea", "tan", "ate", "nat", "bat"};
+
+    unordered_map<string, vector<string>> mp;
+
+    for (string s : strs) {
+        string key = s;
+        sort(key.begin(), key.end());
+        mp[key].push_back(s);
+    }
+
+    for (auto x : mp) {
+        cout << "[";
+        for (string word : x.second) {
+            cout << word << " ";
+        }
+        cout << "]" << endl;
+    }
+
+    return 0;
+}
